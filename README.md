@@ -1,0 +1,1 @@
+# zerto_vcenter_role_least_privileges

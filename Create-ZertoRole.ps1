@@ -39,7 +39,7 @@ if (New-VIRole -name $RoleName -Privilege $VMwarePrivileges)
     Write-Host "NOTE: After this, you can go into vCenter GUI and assign the service account the ZVM will use to this role and place it at the top level of vCenter."  
     Write-Host "      Or if you wish to do via PowerCLI, here's an example command to use:"
     Write-Host
-    Write-Host "      e.g., New-VIPermission -Role `"Zerto - Least Privilege Service Account Role`" -Principal `"vsphere.local\svc-zerto`" -Entity (Get-Folder Datacenters) -Propagate:$true"
+    Write-Host "      e.g., New-VIPermission -Role `"Zerto - Least Privilege Service Account Role`" -Principal `"vsphere.local\svc-zerto`" -Entity (Get-Folder Datacenters) -Propagate 1"
     Write-Host
     Write-Host "      In this example, an existing account (svc-zerto@vsphere.local) is assigned the newly created role at the vCenter top-level, with propogation to all children."
     Write-Host "      Please consider the appropriate action for your environment based on your own internal security and management guidelines."

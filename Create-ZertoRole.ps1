@@ -17,7 +17,7 @@ param (
 # Privileges are specified in a text file, one per line, in the format understood by PowerCLI and vSphere
 # Will read them into a variable, so make sure this file is present in the same folder as this script
 
-$Privileges = Get-Content .\zerto_vcenter_role_least_privileges.txt
+$Privileges = Get-Content .\zerto-role-least-privileges-vCenter7.txt
 
 # One requirement is that you already have PowerCLI connected to a vCenter (i.e., using Connect-VIServer) which will mean the PowerCLI module is loaded
 # Verify PowerCLI Connectivity, otherwise throw an error and exit

@@ -5,14 +5,25 @@ In no event shall Zerto, its authors or anyone else involved in the creation, pr
 
 # What This Script Does
 
-In the vCenter and Hyper-V Installation Guide, Zerto documents the list of the minimum privileges needed for a ZVM to work with a vCenter. A common mistake is for users to assign a full administrator role to this service account which is not a best practice. Zerto recommends you create a separate role with least privleges for that account to use. The guide lists the privileges and explains why each is needed in greater detail. For information, please read the guide.
+In the article "vSphere: Privileges Required by Zerto Virtual Replication" (see References), Zerto documents the list of the minimum privileges needed for a ZVM to work with a vCenter. A common mistake is for users to assign a full administrator role to this service account which is not a best practice. Zerto recommends you create a separate role with least privleges for that account to use. The guide lists the privileges and explains why each is needed in greater detail. For information, please read the guide.
 
-The goal of the script is to automate the creation of that role via script to minimize time and possibility for error. Also, this script is kept up-to-date as Zerto releases new versions and may differ slightly from the guide based on feedback and testing and lag time in documentation updates.
+The goal of the script is to automate the creation of that role via script to minimize time and possibility for error. Note that this is an example script and that an effort will be made to update it as Zerto releases new versions. It is the responsbility of the user to understand how this script works and to validate it is applicable to the vSphere and Zerto versions being used at script runtime.
+
+# References
+- https://help.zerto.com/bundle/Prereq.VC.HTML/page/Content/Ent_Guide_VC/Prerequisites_Requirements_vSphere_Environments.htm
+- https://help.zerto.com/bundle/Install.VC.HTML/page/Content/Install_ZVM-Hyper-V/vSphere_Privileges_Required_by_Zerto_Virtual_Replication.htm
 
 # Requirements
+- Supported versions of VMware vSphere (vCenter, ESXi)
+- Supported version of Zerto
+- PowerShell
 - Supported version of VMware's PowerCLI Powershell Module
 - Appropriate privileges to create a role in vCenter
 
 # How to use this script
 
-Make sure you are connect to a vCenter using a command like Connect-VIServer and with a user with appropriate privileges to create/edit a VIRole in that vCenter. Then run this script, which will read in the appropriate vCenter privileges from the text file and create a new role using New-VIRole. You can then assign the ZVM service account this role at the top level of vCenter with propogation to children enabled.
+Make sure you are already connected to a vCenter (i.e., Connect-VIServer) and with a user with appropriate privileges to create/edit a VIRole in that vCenter. Then run this script, which will read in the appropriate vCenter privileges from the text file and create a new role using New-VIRole. You can then assign the ZVM service account this role at the top level of vCenter with "propogation to children" enabled.
+
+# Noteworthy
+
+This script was developed and tested using PowerShell 7.2.4, PowerCLI 11.2, vSphere 7.0, and Zerto 9.5. No warranties or guarantees are made for these or any other versions.
